@@ -1,0 +1,114 @@
+.profile-builder { max-width: 900px; }
+
+.profile-builder__card { padding: var(--space-xl); }
+
+.profile-builder__section { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.profile-builder__exp-block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+
+.profile-builder__exp-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.profile-builder__skill-input-row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.profile-builder__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--space-sm);
+}
+
+.profile-builder__suggestion-chip {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  border: 1px dashed var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.profile-builder__suggestion-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(0,112,243,0.06);
+}
+
+.profile-builder__skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--space-md);
+}
+
+.profile-builder__skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.3rem 0.75rem;
+  background: rgba(0,112,243,0.12);
+  border: 1px solid rgba(0,112,243,0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.profile-builder__skill-tag button {
+  background: none;
+  border: none;
+  color: rgba(0,112,243,0.6);
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 0;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.profile-builder__skill-tag button:hover { color: var(--color-error); }
+
+.profile-builder__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.profile-builder__preview { margin-top: var(--space-xl); }
+
+.profile-builder__preview-card { padding: var(--space-lg); }
+
+.profile-builder__preview-header { display: flex; align-items: center; gap: var(--space-md); }
+
+.profile-builder__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: white;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  flex-shrink: 0;
+}
