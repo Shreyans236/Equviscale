@@ -1,0 +1,202 @@
+/* EquiScale Enterprise Visual Analytics & Accessibility Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --font-scale: 1;
+
+  /* ========================================================= */
+  /* DEFAULT THEME: LIGHT / DAY MODE                           */
+  /* Pure White Background with High-Contrast Dark Black Text  */
+  /* ========================================================= */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F5F9;
+  --bg-card-border: #CBD5E1;
+  --bg-elevated: #F1F5F9;
+  
+  --text-primary: #0F172A; /* Deep Black for high contrast */
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-inverse: #FFFFFF;
+  
+  /* Brand & Accent Colors - Light Mode (Contrast >= 4.5:1) */
+  --accent-cyan: #0284C7;        /* Rich Ocean Cyan-Blue */
+  --accent-cyan-bg: #E0F2FE;
+  --accent-purple: #7E22CE;      /* Deep Royal Purple */
+  --accent-purple-bg: #F3E8FF;
+  --accent-emerald: #15803D;     /* Forest Emerald Green */
+  --accent-emerald-bg: #DCFCE7;
+  --accent-amber: #B45309;       /* Deep Gold / Amber */
+  --accent-amber-bg: #FEF3C7;
+  --accent-rose: #BE123C;        /* Rich Crimson Rose */
+  --accent-rose-bg: #FFE4E6;
+  
+  /* Redaction Pill Styling - Light Mode */
+  --redact-bg: #FEE2E2;
+  --redact-color: #991B1B;
+  --redact-border: #F87171;
+  
+  /* Focus & Accessibility Indicators */
+  --focus-ring-color: #0284C7;
+  --focus-ring-shadow: 0 0 0 3px rgba(2, 132, 199, 0.35);
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 16px;
+
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ========================================================= */
+/* NIGHT MODE (DARK THEME)                                  */
+/* Pure Black Background with High-Contrast Pure White Text */
+/* ========================================================= */
+[data-theme="dark"] {
+  --bg-primary: #050811;
+  --bg-secondary: #0F172A;
+  --bg-card: #1E293B;
+  --bg-card-hover: #334155;
+  --bg-card-border: #475569;
+  --bg-elevated: #1E293B;
+  
+  --text-primary: #FFFFFF; /* Pure White Text */
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-inverse: #0F172A;
+  
+  --accent-cyan: #38BDF8;
+  --accent-cyan-bg: rgba(56, 189, 248, 0.15);
+  --accent-purple: #C084FC;
+  --accent-purple-bg: rgba(192, 132, 252, 0.15);
+  --accent-emerald: #4ADE80;
+  --accent-emerald-bg: rgba(74, 222, 128, 0.15);
+  --accent-amber: #FBBF24;
+  --accent-amber-bg: rgba(251, 191, 36, 0.15);
+  --accent-rose: #FB7185;
+  --accent-rose-bg: rgba(251, 113, 133, 0.15);
+  
+  --redact-bg: rgba(251, 113, 133, 0.2);
+  --redact-color: #FECDD3;
+  --redact-border: rgba(251, 113, 133, 0.4);
+  
+  --focus-ring-color: #38BDF8;
+  --focus-ring-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4);
+}
+
+/* ========================================================= */
+/* WCAG AAA HIGH CONTRAST MODE (Deep Pitch Black & Gold)     */
+/* ========================================================= */
+[data-high-contrast="true"] {
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --bg-card: #121212;
+  --bg-card-hover: #1E1E1E;
+  --bg-card-border: #FFD700;
+  --bg-elevated: #1A1A1A;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --text-muted: #B0B0B0;
+  --text-inverse: #000000;
+  
+  --accent-cyan: #00FFFF;
+  --accent-cyan-bg: #003333;
+  --accent-purple: #FF77FF;
+  --accent-purple-bg: #330033;
+  --accent-emerald: #00FF66;
+  --accent-emerald-bg: #003311;
+  --accent-amber: #FFD700;
+  --accent-amber-bg: #332B00;
+  --accent-rose: #FF4444;
+  --accent-rose-bg: #330000;
+  
+  --redact-bg: #330000;
+  --redact-color: #FF8888;
+  --redact-border: #FF4444;
+  
+  --focus-ring-color: #FFD700;
+  --focus-ring-shadow: 0 0 0 4px #FFD700;
+}
+
+/* Global Reset & Typography Scaling */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: calc(16px * var(--font-scale));
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Screen Reader Only Utility (WCAG compliant) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Focus Visibility - WCAG 2.4.7 */
+:focus-visible {
+  outline: 3px solid var(--focus-ring-color) !important;
+  outline-offset: 2px !important;
+  box-shadow: var(--focus-ring-shadow);
+}
+
+/* Reduced Motion Override - WCAG 2.3.3 */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
