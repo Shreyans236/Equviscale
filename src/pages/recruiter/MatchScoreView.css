@@ -1,0 +1,103 @@
+.match-score { max-width: 1100px; }
+
+.match-score__selectors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.match-score__content { display: flex; flex-direction: column; gap: var(--space-xl); }
+
+.match-score__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xl);
+  background: linear-gradient(135deg, rgba(0,112,243,0.06), rgba(121,40,202,0.06));
+  border-color: rgba(0,112,243,0.2);
+}
+
+.match-score__hero-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.match-score__hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.match-score__candidate-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  background: rgba(0,212,170,0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+}
+
+.match-score__recommendation {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  max-width: 380px;
+  margin-bottom: var(--space-md);
+}
+
+.match-score__hero-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.match-score__breakdown { align-items: start; }
+
+.match-score__bars { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.match-score__bar-item { display: flex; flex-direction: column; gap: 6px; }
+
+.match-score__bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Mini bar chart */
+.match-score__confidence-grid {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  height: 100px;
+}
+
+.match-score__confidence-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 4px;
+}
+
+.match-score__confidence-fill {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.8s ease;
+  min-height: 4px;
+}
+
+.match-score__confidence-label {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .match-score__selectors { grid-template-columns: 1fr; }
+  .match-score__hero { flex-direction: column; gap: var(--space-lg); }
+  .match-score__hero-left { flex-direction: column; text-align: center; }
+}

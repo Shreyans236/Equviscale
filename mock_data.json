@@ -1,0 +1,573 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "EquiScale Mock Dataset",
+  "description": "Comprehensive test dataset for EquiScale API testing featuring sample job descriptions, bias detection metrics, and fully anonymized candidate profiles with AI match scores and skill gap analyses.",
+  "version": "1.0.0",
+  "generatedAt": "2024-09-04T12:00:00Z",
+  "metadata": {
+    "totalJobs": 6,
+    "totalCandidates": 6,
+    "complianceStandard": "EEOC / GDPR Blind Recruitment Certified",
+    "anonymizationRulesApplied": [
+      "Removal of Direct PII (Full Name, Phone Number, Email, Street Address)",
+      "Suppression of Demographic Attributes (Age, Gender, Ethnicity, Nationality)",
+      "Standardization of Academic Degrees (Omitting University Prestige Bias)",
+      "Neutralized Institutional Descriptors (e.g., 'Fortune 500 Enterprise', 'FinTech Scale-up')"
+    ]
+  },
+  "jobs": [
+    {
+      "id": "j-101",
+      "title": "Senior Full-Stack Engineer",
+      "department": "Core Product Engineering",
+      "domain": "Cloud Applications",
+      "location": "Berlin, Germany (Hybrid)",
+      "type": "Full-Time",
+      "salaryRange": "€75,000 – €95,000",
+      "experienceRequired": 4,
+      "requiredSkills": ["React", "Node.js", "PostgreSQL", "Docker"],
+      "niceToHaveSkills": ["Kubernetes", "GraphQL", "TypeScript", "SAP BTP"],
+      "description": "We are seeking a Senior Full-Stack Engineer to architect resilient cloud microservices and build responsive web applications. You will collaborate with cross-functional design and infrastructure teams to deliver high-throughput enterprise features, mentor team members, and champion modern code quality standards.",
+      "responsibilities": [
+        "Architect and maintain scalable REST and GraphQL backend services in Node.js and PostgreSQL",
+        "Develop accessible, state-of-the-art UI components using React and design tokens",
+        "Deploy containerized microservices to cloud runtimes using Docker and CI/CD pipelines",
+        "Conduct rigorous code reviews and foster inclusive engineering excellence"
+      ],
+      "biasCheck": {
+        "passed": true,
+        "biasScore": 8,
+        "flaggedPhrases": [],
+        "suggestions": [
+          "Job description utilizes inclusive and gender-neutral terminology."
+        ]
+      },
+      "applicantCount": 34,
+      "status": "Active",
+      "createdAt": "2024-08-01"
+    },
+    {
+      "id": "j-102",
+      "title": "Data Engineer & Analytics Specialist",
+      "department": "Data Platform & Intelligence",
+      "domain": "Enterprise Data",
+      "location": "Munich, Germany (Remote)",
+      "type": "Full-Time",
+      "salaryRange": "€68,000 – €88,000",
+      "experienceRequired": 3,
+      "requiredSkills": ["Python", "Apache Spark", "SQL", "AWS", "Data Analytics"],
+      "niceToHaveSkills": ["dbt", "Airflow", "SAP HANA", "Kafka"],
+      "description": "Join our analytics platform team to architect scalable ETL/ELT pipelines, manage cloud data lakehouses, and power real-time AI decision-making models. You will work closely with data scientists to optimize query performance and ensure robust data governance across enterprise datasets.",
+      "responsibilities": [
+        "Design, build, and optimize high-volume batch and streaming data pipelines with Spark and Python",
+        "Maintain cloud data warehouse architectures on AWS and coordinate with SAP HANA data sources",
+        "Implement automated data quality checks, observability, and schema migration procedures",
+        "Collaborate with business intelligence leads to deliver performant analytics dashboards"
+      ],
+      "biasCheck": {
+        "passed": true,
+        "biasScore": 12,
+        "flaggedPhrases": [],
+        "suggestions": [
+          "Language is balanced and performance-oriented."
+        ]
+      },
+      "applicantCount": 21,
+      "status": "Active",
+      "createdAt": "2024-08-10"
+    },
+    {
+      "id": "j-103",
+      "title": "Cloud Solutions Architect",
+      "department": "Infrastructure & Platform Architecture",
+      "domain": "Cloud Infrastructure",
+      "location": "Frankfurt, Germany (On-site)",
+      "type": "Full-Time",
+      "salaryRange": "€90,000 – €115,000",
+      "experienceRequired": 6,
+      "requiredSkills": ["AWS", "Azure", "Terraform", "Kubernetes", "Cloud & DevOps"],
+      "niceToHaveSkills": ["SAP BTP", "Ansible", "Service Mesh (Istio)", "FinOps"],
+      "description": "Lead the architectural transformation of hybrid and multi-cloud enterprise footprints. You will define zero-trust security postures, automate multi-region infrastructure provisioning using Terraform, and partner with product leads to ensure uninterrupted business continuity.",
+      "responsibilities": [
+        "Formulate multi-cloud strategy across AWS, Azure, and private cloud infrastructures",
+        "Standardize Infrastructure-as-Code modules using Terraform and GitOps practices",
+        "Guide container orchestration strategies on enterprise Kubernetes clusters",
+        "Advise security and compliance committees on ISO 27001 and GDPR infrastructure adherence"
+      ],
+      "biasCheck": {
+        "passed": false,
+        "biasScore": 28,
+        "flaggedPhrases": ["young and dynamic team", "rockstar architect"],
+        "suggestions": [
+          "Replace 'young and dynamic team' with 'collaborative, high-performing team'",
+          "Replace 'rockstar architect' with 'experienced architectural leader'"
+        ]
+      },
+      "applicantCount": 12,
+      "status": "Draft",
+      "createdAt": "2024-08-20"
+    },
+    {
+      "id": "j-104",
+      "title": "Lead SAP S/4HANA & ABAP Consultant",
+      "department": "Enterprise ERP Transformation",
+      "domain": "SAP S/4HANA",
+      "location": "Walldorf / Mannheim, Germany (Hybrid)",
+      "type": "Full-Time",
+      "salaryRange": "€80,000 – €105,000",
+      "experienceRequired": 5,
+      "requiredSkills": ["ABAP", "SAP HANA", "SAP S/4HANA", "SAP Fiori"],
+      "niceToHaveSkills": ["ABAP RAP", "SAP BTP", "OData", "SAP Integration Suite"],
+      "description": "We are seeking an experienced SAP Technical Consultant to lead custom development and modern extension projects for our global SAP S/4HANA migration. You will design clean-core extensions using the ABAP RESTful Application Programming (RAP) model and SAP Fiori Elements.",
+      "responsibilities": [
+        "Develop modern SAP S/4HANA extensions adhering strictly to clean core and cloud readiness guidelines",
+        "Design optimized Core Data Services (CDS) views and database procedures in SAP HANA",
+        "Implement responsive Fiori/SAPUI5 user interfaces and configure Launchpad catalog roles",
+        "Mentor junior developers in modern ABAP OO and test-driven development (ABAP Unit)"
+      ],
+      "biasCheck": {
+        "passed": true,
+        "biasScore": 6,
+        "flaggedPhrases": [],
+        "suggestions": [
+          "Well-structured, inclusive role specification."
+        ]
+      },
+      "applicantCount": 18,
+      "status": "Active",
+      "createdAt": "2024-08-15"
+    },
+    {
+      "id": "j-105",
+      "title": "Supply Chain Transformation Consultant",
+      "department": "Global Supply Chain Practice",
+      "domain": "Supply Chain Management",
+      "location": "Zurich, Switzerland (Hybrid)",
+      "type": "Full-Time",
+      "salaryRange": "CHF 110,000 – CHF 135,000",
+      "experienceRequired": 4,
+      "requiredSkills": ["Supply Chain Management", "SAP S/4HANA", "Data Analytics"],
+      "niceToHaveSkills": ["SAP IBP", "SAP EWM", "Inventory Optimization", "Logistics Execution"],
+      "description": "Drive end-to-end digital supply chain optimization for global multinational clients. You will analyze order-to-cash and procure-to-pay pipelines, configure advanced demand sensing models, and align business KPIs with intelligent ERP workflows.",
+      "responsibilities": [
+        "Map and optimize complex multinational manufacturing and logistics workflows",
+        "Facilitate requirements discovery workshops for S/4HANA Supply Chain and IBP rollouts",
+        "Build executive dashboards tracking fill rate, inventory turns, and supply chain lead times",
+        "Supervise user acceptance testing (UAT) and conduct functional training workshops"
+      ],
+      "biasCheck": {
+        "passed": true,
+        "biasScore": 10,
+        "flaggedPhrases": [],
+        "suggestions": [
+          "Objective, requirements-centered phrasing."
+        ]
+      },
+      "applicantCount": 15,
+      "status": "Active",
+      "createdAt": "2024-08-18"
+    },
+    {
+      "id": "j-106",
+      "title": "Enterprise AI & Machine Learning Engineer",
+      "department": "Applied AI Research & Innovation",
+      "domain": "Artificial Intelligence",
+      "location": "Berlin, Germany (Remote)",
+      "type": "Full-Time",
+      "salaryRange": "€78,000 – €100,000",
+      "experienceRequired": 3,
+      "requiredSkills": ["Python", "Machine Learning & AI in SAP", "Docker", "SQL"],
+      "niceToHaveSkills": ["SAP AI Core", "PyTorch", "Hugging Face", "Cloud & DevOps"],
+      "description": "Build and deploy generative AI agents, semantic retrieval pipelines, and predictive algorithms integrated into enterprise business processes. You will leverage cloud-native containerized runtimes to serve production-ready model endpoints with guaranteed low latency.",
+      "responsibilities": [
+        "Develop enterprise RAG architectures and LLM orchestrations for structured and unstructured data",
+        "Containerize ML models using Docker and deploy pipelines on Kubernetes / SAP AI Core",
+        "Evaluate model performance, bias, hallucination rates, and drift metrics",
+        "Work collaboratively with backend teams to integrate inference APIs into business workflows"
+      ],
+      "biasCheck": {
+        "passed": true,
+        "biasScore": 7,
+        "flaggedPhrases": [],
+        "suggestions": [
+          "Clear, skill-focused description free from demographic markers."
+        ]
+      },
+      "applicantCount": 27,
+      "status": "Active",
+      "createdAt": "2024-08-22"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "c-001",
+      "anonymizedId": "ANON-7842",
+      "jobId": "j-101",
+      "targetRole": "Senior Full-Stack Engineer",
+      "status": "Interview",
+      "appliedDate": "2024-08-15",
+      "headline": "Full-Stack Software Engineer | Modern JavaScript, React & Cloud APIs",
+      "experienceYears": 4,
+      "education": "Bachelor of Science in Computer Science (Accredited University)",
+      "skills": ["React", "Node.js", "Python", "SQL", "PostgreSQL", "Docker", "REST APIs", "Git"],
+      "certifications": [
+        "Certified Kubernetes Application Developer (CKAD) - In Progress",
+        "Docker Certified Associate"
+      ],
+      "anonymizedExperience": [
+        {
+          "role": "Full-Stack Software Engineer",
+          "organizationType": "Series B SaaS Enterprise",
+          "tenure": "2022 – Present (2 years)",
+          "achievements": [
+            "Architected decoupled React frontend and Node.js microservices serving 120k monthly active users",
+            "Optimized PostgreSQL schema and indexed read-heavy queries, reducing median API latency by 42%",
+            "Containerized core microservices using Docker and integrated CI/CD automated linting and tests"
+          ]
+        },
+        {
+          "role": "Junior Backend Developer",
+          "organizationType": "Digital Solutions Consultancy",
+          "tenure": "2020 – 2022 (2 years)",
+          "achievements": [
+            "Implemented RESTful web services in Node.js/Express and integrated third-party payment gateways",
+            "Maintained 94% unit test code coverage using Jest and Supertest"
+          ]
+        }
+      ],
+      "matchScore": 92,
+      "matchAnalysis": {
+        "overallScore": 92,
+        "breakdown": {
+          "skillsMatch": 95,
+          "experienceMatch": 88,
+          "educationMatch": 90,
+          "cultureFitScore": 85
+        },
+        "topMatchingSkills": ["React", "Node.js", "PostgreSQL", "Docker"],
+        "missingSkills": ["Kubernetes"],
+        "recommendedCourses": [
+          {
+            "skill": "Cloud & DevOps",
+            "courseCode": "CLD200",
+            "title": "Cloud-Native Development & Containerization on SAP BTP",
+            "url": "https://learning.sap.com/courses/cloud-native-application-development"
+          }
+        ],
+        "aiRecommendation": "Strong Match — Candidate exceeds core full-stack criteria. Minor container orchestration gap is easily bridged via self-paced onboarding."
+      },
+      "anonymizationMetadata": {
+        "strippedFields": ["fullName", "email", "phone", "photo", "residentialAddress", "gender", "age"],
+        "compliance": "EEOC / GDPR Blind Review Verified"
+      }
+    },
+    {
+      "id": "c-002",
+      "anonymizedId": "ANON-3319",
+      "jobId": "j-101",
+      "targetRole": "Senior Full-Stack Engineer",
+      "status": "Screening",
+      "appliedDate": "2024-08-18",
+      "headline": "Backend & Cloud Systems Engineer | Distributed Architecture & Microservices",
+      "experienceYears": 6,
+      "education": "Master of Science in Software Engineering (Accredited University)",
+      "skills": ["Java", "Spring Boot", "Kubernetes", "AWS", "Docker", "PostgreSQL", "Kafka", "Microservices"],
+      "certifications": [
+        "AWS Certified Solutions Architect – Associate",
+        "Certified Kubernetes Administrator (CKA)"
+      ],
+      "anonymizedExperience": [
+        {
+          "role": "Senior Systems Engineer",
+          "organizationType": "Global Logistics Technology Provider",
+          "tenure": "2021 – Present (3 years)",
+          "achievements": [
+            "Engineered high-throughput event processing pipelines with Kafka and Java Spring Boot",
+            "Managed multi-tenant Kubernetes clusters on AWS handling over 5 million daily events",
+            "Spearheaded database partitioning on PostgreSQL to sustain rapid user growth"
+          ]
+        },
+        {
+          "role": "Software Developer",
+          "organizationType": "FinTech Infrastructure Corp",
+          "tenure": "2018 – 2021 (3 years)",
+          "achievements": [
+            "Developed secure microservices adhering to PCI-DSS standards",
+            "Automated cloud provisioning scripts using Terraform and Docker"
+          ]
+        }
+      ],
+      "matchScore": 84,
+      "matchAnalysis": {
+        "overallScore": 84,
+        "breakdown": {
+          "skillsMatch": 80,
+          "experienceMatch": 94,
+          "educationMatch": 92,
+          "cultureFitScore": 88
+        },
+        "topMatchingSkills": ["PostgreSQL", "Docker", "Kubernetes"],
+        "missingSkills": ["React"],
+        "recommendedCourses": [
+          {
+            "skill": "SAP Fiori",
+            "courseCode": "UX400",
+            "title": "Developing UIs with SAPUI5 and SAP Fiori",
+            "url": "https://learning.sap.com/courses/developing-uis-with-sapui5"
+          }
+        ],
+        "aiRecommendation": "High Potential Match — Deep backend systems and infrastructure mastery. Would benefit from front-end component upskilling if full-stack UI output is immediately required."
+      },
+      "anonymizationMetadata": {
+        "strippedFields": ["fullName", "email", "phone", "photo", "residentialAddress", "gender", "age"],
+        "compliance": "EEOC / GDPR Blind Review Verified"
+      }
+    },
+    {
+      "id": "c-003",
+      "anonymizedId": "ANON-5561",
+      "jobId": "j-102",
+      "targetRole": "Data Engineer & Analytics Specialist",
+      "status": "Applied",
+      "appliedDate": "2024-08-20",
+      "headline": "Data Platform Engineer | Big Data Pipelines, Spark & Data Warehousing",
+      "experienceYears": 3,
+      "education": "Bachelor of Science in Data Science & Mathematics",
+      "skills": ["Python", "SQL", "Apache Spark", "AWS", "Docker", "Data Analytics", "Pandas"],
+      "certifications": [
+        "AWS Certified Data Analytics – Specialty"
+      ],
+      "anonymizedExperience": [
+        {
+          "role": "Associate Data Engineer",
+          "organizationType": "E-Commerce Enterprise",
+          "tenure": "2021 – Present (3 years)",
+          "achievements": [
+            "Built distributed PySpark pipelines processing 4TB of raw clickstream logs daily into AWS S3",
+            "Authored complex SQL aggregations powering executive decision dashboards",
+            "Reduced cloud processing expenses by 26% through intelligent Spark cluster resizing"
+          ]
+        }
+      ],
+      "matchScore": 88,
+      "matchAnalysis": {
+        "overallScore": 88,
+        "breakdown": {
+          "skillsMatch": 90,
+          "experienceMatch": 85,
+          "educationMatch": 90,
+          "cultureFitScore": 82
+        },
+        "topMatchingSkills": ["Python", "Apache Spark", "SQL", "AWS", "Data Analytics"],
+        "missingSkills": ["SAP HANA"],
+        "recommendedCourses": [
+          {
+            "skill": "SAP HANA",
+            "courseCode": "HA100",
+            "title": "SAP HANA 2.0 - 360° Introduction",
+            "url": "https://learning.sap.com/courses/sap-hana-360-introduction"
+          },
+          {
+            "skill": "Data Analytics",
+            "courseCode": "DSP01",
+            "title": "SAP Datasphere Architecture & Data Modeling",
+            "url": "https://learning.sap.com/courses/sap-datasphere-architecture-and-modeling"
+          }
+        ],
+        "aiRecommendation": "Targeted Match — Outstanding foundational data engineering in Python/Spark/AWS. Introduction to SAP HANA will unlock enterprise analytics interoperability."
+      },
+      "anonymizationMetadata": {
+        "strippedFields": ["fullName", "email", "phone", "photo", "residentialAddress", "gender", "age"],
+        "compliance": "EEOC / GDPR Blind Review Verified"
+      }
+    },
+    {
+      "id": "c-004",
+      "anonymizedId": "ANON-9102",
+      "jobId": "j-101",
+      "targetRole": "Senior Full-Stack Engineer",
+      "status": "Offer",
+      "appliedDate": "2024-08-10",
+      "headline": "Lead Full-Stack Architect | TypeScript, React, GraphQL & Cloud Native Systems",
+      "experienceYears": 5,
+      "education": "Bachelor of Science in Information Technology",
+      "skills": ["TypeScript", "React", "Node.js", "GraphQL", "PostgreSQL", "Docker", "Kubernetes", "Next.js"],
+      "certifications": [
+        "Certified Kubernetes Administrator (CKA)",
+        "HashiCorp Certified: Terraform Associate"
+      ],
+      "anonymizedExperience": [
+        {
+          "role": "Lead Full-Stack Developer",
+          "organizationType": "International B2B Cloud Marketplace",
+          "tenure": "2021 – Present (3.5 years)",
+          "achievements": [
+            "Led architecture transition from monolithic legacy app to modern React/GraphQL/Node.js stack",
+            "Implemented CI/CD pipelines reducing deployment turnaround from 3 hours to 12 minutes",
+            "Maintained zero-downtime database migrations on enterprise PostgreSQL clusters"
+          ]
+        },
+        {
+          "role": "Full-Stack Developer",
+          "organizationType": "Software Scale-Up",
+          "tenure": "2019 – 2021 (2 years)",
+          "achievements": [
+            "Engineered customer portals in React and Node.js with real-time WebSocket notifications"
+          ]
+        }
+      ],
+      "matchScore": 96,
+      "matchAnalysis": {
+        "overallScore": 96,
+        "breakdown": {
+          "skillsMatch": 98,
+          "experienceMatch": 94,
+          "educationMatch": 90,
+          "cultureFitScore": 95
+        },
+        "topMatchingSkills": ["React", "Node.js", "PostgreSQL", "Docker", "Kubernetes", "GraphQL", "TypeScript"],
+        "missingSkills": [],
+        "recommendedCourses": [],
+        "aiRecommendation": "Exceptional Match — Flawless alignment with job profile. Zero technical skill gaps identified."
+      },
+      "anonymizationMetadata": {
+        "strippedFields": ["fullName", "email", "phone", "photo", "residentialAddress", "gender", "age"],
+        "compliance": "EEOC / GDPR Blind Review Verified"
+      }
+    },
+    {
+      "id": "c-005",
+      "anonymizedId": "ANON-4028",
+      "jobId": "j-104",
+      "targetRole": "Lead SAP S/4HANA & ABAP Consultant",
+      "status": "Interview",
+      "appliedDate": "2024-08-16",
+      "headline": "SAP Technical Architect | ABAP Development, S/4HANA Clean Core & OData",
+      "experienceYears": 6,
+      "education": "Master of Science in Information Systems",
+      "skills": ["ABAP", "SAP HANA", "SAP S/4HANA", "SQL", "OData", "Core Data Services (CDS)", "Git"],
+      "certifications": [
+        "SAP Certified Development Specialist - ABAP for SAP HANA",
+        "SAP Certified Associate - Back-End Developer - ABAP Cloud"
+      ],
+      "anonymizedExperience": [
+        {
+          "role": "Senior SAP Technical Consultant",
+          "organizationType": "Global Systems Integrator",
+          "tenure": "2020 – Present (4 years)",
+          "achievements": [
+            "Delivered 3 end-to-end S/4HANA on-premise to cloud conversion projects using clean core patterns",
+            "Developed over 60 custom CDS views and analytical queries on SAP HANA 2.0 SPS05",
+            "Authored reusable ABAP Unit test suites, increasing automated code verification by 65%"
+          ]
+        },
+        {
+          "role": "ABAP Developer",
+          "organizationType": "Manufacturing Conglomerate",
+          "tenure": "2018 – 2020 (2 years)",
+          "achievements": [
+            "Maintained ECC 6.0 and S/4HANA custom development objects in SD and MM modules"
+          ]
+        }
+      ],
+      "matchScore": 91,
+      "matchAnalysis": {
+        "overallScore": 91,
+        "breakdown": {
+          "skillsMatch": 92,
+          "experienceMatch": 95,
+          "educationMatch": 94,
+          "cultureFitScore": 86
+        },
+        "topMatchingSkills": ["ABAP", "SAP HANA", "SAP S/4HANA"],
+        "missingSkills": ["SAP Fiori"],
+        "recommendedCourses": [
+          {
+            "skill": "SAP Fiori",
+            "courseCode": "UX400",
+            "title": "Developing UIs with SAPUI5 and SAP Fiori",
+            "url": "https://learning.sap.com/courses/developing-uis-with-sapui5"
+          },
+          {
+            "skill": "SAP Fiori",
+            "courseCode": "UX403",
+            "title": "SAP Fiori Elements - Developing Efficient Enterprise Apps",
+            "url": "https://learning.sap.com/courses/sap-fiori-elements-development"
+          }
+        ],
+        "aiRecommendation": "Strong Match — Proven ABAP and S/4HANA core capabilities. Training on SAP Fiori Elements will complete end-to-end full-stack SAP competency."
+      },
+      "anonymizationMetadata": {
+        "strippedFields": ["fullName", "email", "phone", "photo", "residentialAddress", "gender", "age"],
+        "compliance": "EEOC / GDPR Blind Review Verified"
+      }
+    },
+    {
+      "id": "c-006",
+      "anonymizedId": "ANON-6214",
+      "jobId": "j-105",
+      "targetRole": "Supply Chain Transformation Consultant",
+      "status": "Screening",
+      "appliedDate": "2024-08-22",
+      "headline": "Supply Chain Strategist | Logistics Analytics, Inventory Planning & ERP",
+      "experienceYears": 4,
+      "education": "Master of Business Administration (MBA) - Operations & Supply Chain",
+      "skills": ["Supply Chain Management", "Data Analytics", "SQL", "Tableau", "Process Optimization", "Logistics"],
+      "certifications": [
+        "APICS Certified Supply Chain Professional (CSCP)",
+        "Lean Six Sigma Green Belt"
+      ],
+      "anonymizedExperience": [
+        {
+          "role": "Supply Chain Analyst",
+          "organizationType": "Multinational Consumer Goods Manufacturer",
+          "tenure": "2021 – Present (3.5 years)",
+          "achievements": [
+            "Optimized global safety stock policies, reducing carrying cost by €1.4M without impacting service levels",
+            "Designed automated daily replenishment tracking models analyzing multi-tiered vendor lead times",
+            "Led cross-functional supply and operations planning (S&OP) monthly cadence across 4 regions"
+          ]
+        },
+        {
+          "role": "Operations Management Trainee",
+          "organizationType": "Logistics & Freight Provider",
+          "tenure": "2020 – 2021 (1 year)",
+          "achievements": [
+            "Audited freight routing efficiency and implemented route dispatch improvements"
+          ]
+        }
+      ],
+      "matchScore": 82,
+      "matchAnalysis": {
+        "overallScore": 82,
+        "breakdown": {
+          "skillsMatch": 80,
+          "experienceMatch": 84,
+          "educationMatch": 92,
+          "cultureFitScore": 85
+        },
+        "topMatchingSkills": ["Supply Chain Management", "Data Analytics"],
+        "missingSkills": ["SAP S/4HANA"],
+        "recommendedCourses": [
+          {
+            "skill": "Supply Chain Management",
+            "courseCode": "SCM600",
+            "title": "Business Processes in SAP S/4HANA Supply Chain Execution",
+            "url": "https://learning.sap.com/courses/business-processes-in-sap-s4hana-supply-chain"
+          },
+          {
+            "skill": "Supply Chain Management",
+            "courseCode": "IBP100",
+            "title": "SAP Integrated Business Planning (IBP) - Overview & Applications",
+            "url": "https://learning.sap.com/courses/sap-integrated-business-planning-overview"
+          }
+        ],
+        "aiRecommendation": "Solid Candidate — Strong analytical and supply chain acumen. Recommending SCM600 to align domain knowledge with SAP S/4HANA transactional workflows."
+      },
+      "anonymizationMetadata": {
+        "strippedFields": ["fullName", "email", "phone", "photo", "residentialAddress", "gender", "age"],
+        "compliance": "EEOC / GDPR Blind Review Verified"
+      }
+    }
+  ]
+}

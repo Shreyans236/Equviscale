@@ -1,0 +1,400 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SAP Learning Hub Course Mapping",
+  "description": "Skill gap remediation mapping linking common technical and business skills to official SAP Learning Hub courses and learning journeys.",
+  "version": "1.0.0",
+  "lastUpdated": "2024-09-04",
+  "baseUrl": "https://learning.sap.com",
+  "skills": {
+    "ABAP": {
+      "skill": "ABAP",
+      "category": "Technical",
+      "aliases": ["ABAP Programming", "ABAP OO", "Advanced Business Application Programming", "ABAP Core", "ABAP RESTful Application Programming", "RAP"],
+      "description": "High-level 4GL programming language created by SAP for building enterprise business applications on the SAP NetWeaver and SAP BTP platforms.",
+      "courses": [
+        {
+          "courseCode": "BC400",
+          "title": "ABAP Workbench Foundations",
+          "level": "Associate",
+          "duration": "5 days / 35 hours",
+          "format": "E-Learning / Instructor-Led",
+          "url": "https://learning.sap.com/courses/abap-workbench-foundations",
+          "learningJourney": "https://learning.sap.com/learning-journeys/acquire-core-abap-skills",
+          "description": "Learn fundamental concepts of the ABAP development environment, syntax, modularization units, and basic database interaction in SAP systems."
+        },
+        {
+          "courseCode": "BC401",
+          "title": "ABAP Objects",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "E-Learning / Classroom",
+          "url": "https://learning.sap.com/courses/abap-objects",
+          "learningJourney": "https://learning.sap.com/learning-journeys/acquire-core-abap-skills",
+          "description": "Master object-oriented programming in ABAP, including classes, inheritance, interfaces, events, exception handling, and design patterns."
+        },
+        {
+          "courseCode": "S4D430",
+          "title": "Building Modern Applications with ABAP RESTful Application Programming Model (RAP)",
+          "level": "Advanced",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/building-modern-applications-with-abap-rap",
+          "learningJourney": "https://learning.sap.com/learning-journeys/develop-with-sap-btp-abap-environment",
+          "description": "Understand Core Data Services (CDS), business service definitions, behavior definitions, and implementation of transactional cloud applications on SAP S/4HANA."
+        },
+        {
+          "courseCode": "CLD400",
+          "title": "Developing with SAP BTP ABAP Environment",
+          "level": "Professional",
+          "duration": "3 days / 21 hours",
+          "format": "Hands-on Lab & Course",
+          "url": "https://learning.sap.com/courses/developing-with-sap-btp-abap-environment",
+          "learningJourney": "https://learning.sap.com/learning-journeys/develop-with-sap-btp-abap-environment",
+          "description": "Learn cloud-ready ABAP development on SAP Business Technology Platform ('Steampunk') using clean code principles and cloud APIs."
+        }
+      ]
+    },
+    "SAP HANA": {
+      "skill": "SAP HANA",
+      "category": "Technical",
+      "aliases": ["HANA", "SAP HANA 2.0", "HANA Modeling", "In-Memory Database", "HDB", "HANA Cloud"],
+      "description": "In-memory relational database management system designed to process high-volume transactional and analytical enterprise workloads concurrently in real time.",
+      "courses": [
+        {
+          "courseCode": "HA100",
+          "title": "SAP HANA 2.0 - 360° Introduction",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-hana-360-introduction",
+          "learningJourney": "https://learning.sap.com/learning-journeys/getting-started-with-sap-hana",
+          "description": "High-level overview of the SAP HANA platform architecture, in-memory computing fundamentals, calculation views, and integration with SAP systems."
+        },
+        {
+          "courseCode": "HA300",
+          "title": "HANA 2.0 SPS06 - Advanced Data Modeling",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "Hands-on Workshop",
+          "url": "https://learning.sap.com/courses/hana-advanced-data-modeling",
+          "learningJourney": "https://learning.sap.com/learning-journeys/data-modeling-in-sap-hana",
+          "description": "In-depth calculation view design, dimension and star schemas, SQLScript, table functions, decision tables, performance tuning, and spatial data."
+        },
+        {
+          "courseCode": "HA200",
+          "title": "SAP HANA 2.0 Installation and Administration",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "Classroom / E-Learning",
+          "url": "https://learning.sap.com/courses/sap-hana-installation-administration",
+          "learningJourney": "https://learning.sap.com/learning-journeys/administer-sap-hana",
+          "description": "Operational administration of SAP HANA, including multi-tenant database management, backup and recovery, scale-out architectures, and Cockpit."
+        },
+        {
+          "courseCode": "HANACL1",
+          "title": "Provisioning and Administering SAP HANA Cloud",
+          "level": "Associate",
+          "duration": "2 days / 14 hours",
+          "format": "Self-Paced E-Learning",
+          "url": "https://learning.sap.com/courses/provisioning-and-administering-sap-hana-cloud",
+          "learningJourney": "https://learning.sap.com/learning-journeys/get-started-with-sap-hana-cloud",
+          "description": "Managing cloud-native DB instances on SAP BTP, elastic compute scaling, data tiers (in-memory, native storage extension, data lake), and cloud integrations."
+        }
+      ]
+    },
+    "Data Analytics": {
+      "skill": "Data Analytics",
+      "category": "Data & Analytics",
+      "aliases": ["SAP Analytics Cloud", "SAC", "Business Intelligence", "BI", "Data Warehousing", "SAP BW/4HANA", "Enterprise Analytics"],
+      "description": "End-to-end enterprise business intelligence, dashboarding, financial planning, predictive analytics, and enterprise data warehousing with SAP solutions.",
+      "courses": [
+        {
+          "courseCode": "SAC01",
+          "title": "SAP Analytics Cloud - Overview and Core Functionality",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-analytics-cloud-overview",
+          "learningJourney": "https://learning.sap.com/learning-journeys/overview-of-sap-analytics-cloud",
+          "description": "Gain foundational competencies in SAP Analytics Cloud: creating stories, visualizations, responsive dashboards, data connections, and smart features."
+        },
+        {
+          "courseCode": "SACDA1",
+          "title": "Data Analysis and Story Design in SAP Analytics Cloud",
+          "level": "Professional",
+          "duration": "4 days / 28 hours",
+          "format": "Interactive Lab",
+          "url": "https://learning.sap.com/courses/data-analysis-and-story-design-in-sac",
+          "learningJourney": "https://learning.sap.com/learning-journeys/design-stories-in-sap-analytics-cloud",
+          "description": "Advanced story design techniques, calculation models, custom formatting, mobile optimization, blending live data sources, and Smart Insights."
+        },
+        {
+          "courseCode": "BW410",
+          "title": "SAP BW/4HANA Enterprise Data Warehousing",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "Instructor-Led / Online",
+          "url": "https://learning.sap.com/courses/sap-bw4hana-enterprise-data-warehousing",
+          "learningJourney": "https://learning.sap.com/learning-journeys/master-sap-bw4hana",
+          "description": "Design and implement modern, agile data models using ADSOs, CompositeProviders, Open ODS Views, data transformation pipelines, and HANA synergies."
+        },
+        {
+          "courseCode": "DSP01",
+          "title": "SAP Datasphere Architecture & Data Modeling",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-datasphere-architecture-and-modeling",
+          "learningJourney": "https://learning.sap.com/learning-journeys/explore-sap-datasphere",
+          "description": "Unified data management in the business data fabric with SAP Datasphere, data spaces, analytical datasets, business builder, and federation."
+        }
+      ]
+    },
+    "Supply Chain Management": {
+      "skill": "Supply Chain Management",
+      "category": "Business",
+      "aliases": ["SCM", "SAP IBP", "SAP SCM", "Logistics", "SAP EWM", "Extended Warehouse Management", "Procurement", "Inventory Management"],
+      "description": "Optimization and digitization of end-to-end supply chain processes, demand planning, warehousing, inventory management, and vendor logistics in SAP.",
+      "courses": [
+        {
+          "courseCode": "SCM600",
+          "title": "Business Processes in SAP S/4HANA Supply Chain Execution",
+          "level": "Associate",
+          "duration": "4 days / 28 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/business-processes-in-sap-s4hana-supply-chain",
+          "learningJourney": "https://learning.sap.com/learning-journeys/manage-supply-chain-in-s4hana",
+          "description": "Understand core logistics execution processes in S/4HANA: goods receipts, delivery management, picking and packing, posting goods issues, and billing."
+        },
+        {
+          "courseCode": "IBP100",
+          "title": "SAP Integrated Business Planning (IBP) - Overview & Applications",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-integrated-business-planning-overview",
+          "learningJourney": "https://learning.sap.com/learning-journeys/discover-sap-integrated-business-planning",
+          "description": "Introduction to cloud-based supply chain planning: sales & operations planning (S&OP), demand sensing, inventory optimization, and supply & response."
+        },
+        {
+          "courseCode": "SCM630",
+          "title": "Warehouse Management in SAP S/4HANA (Extended Warehouse Management - EWM)",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "Instructor-Led",
+          "url": "https://learning.sap.com/courses/warehouse-management-in-sap-s4hana",
+          "learningJourney": "https://learning.sap.com/learning-journeys/master-sap-ewm",
+          "description": "Comprehensive warehouse processes in SAP EWM: storage bin structures, wave management, slotting and rearrangement, RF terminal integration, and labor management."
+        },
+        {
+          "courseCode": "SCM500",
+          "title": "Procurement and Sourcing Processes in SAP S/4HANA (Materials Management - MM)",
+          "level": "Associate",
+          "duration": "5 days / 35 hours",
+          "format": "Classroom / E-Learning",
+          "url": "https://learning.sap.com/courses/procurement-processes-in-sap-s4hana",
+          "learningJourney": "https://learning.sap.com/learning-journeys/procurement-in-sap-s4hana",
+          "description": "Procure-to-pay lifecycle: purchase requisitions, purchase orders, vendor evaluation, contract management, goods receipt, and invoice verification."
+        }
+      ]
+    },
+    "SAP Fiori": {
+      "skill": "SAP Fiori",
+      "category": "Technical",
+      "aliases": ["SAPUI5", "UI5", "Fiori Elements", "OpenUI5", "Fiori Design System", "Front-end Development"],
+      "description": "User experience and responsive frontend application design system and HTML5/JavaScript framework for enterprise SAP solutions.",
+      "courses": [
+        {
+          "courseCode": "UX100",
+          "title": "SAP Fiori - Foundation and Design Guidelines",
+          "level": "Associate",
+          "duration": "2 days / 14 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-fiori-foundation",
+          "learningJourney": "https://learning.sap.com/learning-journeys/getting-started-with-sap-fiori",
+          "description": "Explore the principles of SAP Fiori design, launchpad configuration, catalogs, roles, tiles, and architecture across desktop and mobile devices."
+        },
+        {
+          "courseCode": "UX400",
+          "title": "Developing UIs with SAPUI5 and SAP Fiori",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "Hands-on Development",
+          "url": "https://learning.sap.com/courses/developing-uis-with-sapui5",
+          "learningJourney": "https://learning.sap.com/learning-journeys/build-sapui5-applications",
+          "description": "Build custom responsive SAPUI5 web applications: MVC patterns, data binding (OData V2/V4, JSON), custom controls, fragments, and routing."
+        },
+        {
+          "courseCode": "UX403",
+          "title": "SAP Fiori Elements - Developing Efficient Enterprise Apps",
+          "level": "Advanced",
+          "duration": "3 days / 21 hours",
+          "format": "Hands-on Workshop",
+          "url": "https://learning.sap.com/courses/sap-fiori-elements-development",
+          "learningJourney": "https://learning.sap.com/learning-journeys/build-sap-fiori-elements-apps",
+          "description": "Accelerate UI development using floorplans (List Report, Object Page, Analytical List Page, Overview Page) driven by OData annotations."
+        }
+      ]
+    },
+    "SAP BTP": {
+      "skill": "SAP BTP",
+      "category": "Cloud & Architecture",
+      "aliases": ["Business Technology Platform", "SAP Cloud Platform", "BTP", "Cloud Foundry", "Kyma"],
+      "description": "Unified cloud platform integrating data management, analytics, artificial intelligence, application development, and integration capabilities across multi-cloud environments.",
+      "courses": [
+        {
+          "courseCode": "BTP100",
+          "title": "SAP Business Technology Platform Foundation",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-btp-foundation",
+          "learningJourney": "https://learning.sap.com/learning-journeys/discover-sap-business-technology-platform",
+          "description": "Foundational architectural concepts of SAP BTP: global accounts, subaccounts, entitlements, Cloud Foundry, Kyma Kubernetes runtime, and security."
+        },
+        {
+          "courseCode": "CLD100",
+          "title": "Cloud Application Programming Model (CAP) on SAP BTP",
+          "level": "Professional",
+          "duration": "4 days / 28 hours",
+          "format": "Lab-Based E-Learning",
+          "url": "https://learning.sap.com/courses/sap-cloud-application-programming-model",
+          "learningJourney": "https://learning.sap.com/learning-journeys/build-applications-with-sap-cap",
+          "description": "Build modern enterprise cloud applications using Node.js or Java with SAP CAP, Core Data Services (CDS), SQLite/HANA persistence, and OData endpoints."
+        },
+        {
+          "courseCode": "DEV01",
+          "title": "SAP Build - Low-Code and No-Code Application Development",
+          "level": "Beginner",
+          "duration": "2 days / 14 hours",
+          "format": "Self-Paced E-Learning",
+          "url": "https://learning.sap.com/courses/sap-build-low-code-development",
+          "learningJourney": "https://learning.sap.com/learning-journeys/utilize-sap-build-for-citizen-development",
+          "description": "Create visual apps and workflow automations using SAP Build Apps, SAP Build Process Automation, and SAP Build Work Zone."
+        }
+      ]
+    },
+    "SAP S/4HANA": {
+      "skill": "SAP S/4HANA",
+      "category": "Business",
+      "aliases": ["S/4HANA", "S4HANA", "SAP ERP", "S/4HANA Cloud", "Enterprise Resource Planning"],
+      "description": "Next-generation intelligent ERP suite running on the SAP HANA in-memory database, streamlining cross-enterprise finance, supply chain, and operations.",
+      "courses": [
+        {
+          "courseCode": "S4H00",
+          "title": "SAP S/4HANA Overview - Architecture and Business Innovations",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-s4hana-overview",
+          "learningJourney": "https://learning.sap.com/learning-journeys/discover-sap-s4hana",
+          "description": "Core architecture, simplification list, Fiori interface integration, Universal Journal, real-time analytics, and cloud deployment options."
+        },
+        {
+          "courseCode": "S4F10",
+          "title": "Business Processes in Financial Accounting in SAP S/4HANA (FI)",
+          "level": "Associate",
+          "duration": "5 days / 35 hours",
+          "format": "E-Learning / Classroom",
+          "url": "https://learning.sap.com/courses/financial-accounting-in-sap-s4hana",
+          "learningJourney": "https://learning.sap.com/learning-journeys/financial-accounting-in-sap-s4hana",
+          "description": "General Ledger, Accounts Payable, Accounts Receivable, Asset Accounting, bank accounting, financial closing, and Universal Journal entry."
+        },
+        {
+          "courseCode": "S4F20",
+          "title": "Business Processes in Management Accounting in SAP S/4HANA (CO)",
+          "level": "Professional",
+          "duration": "5 days / 35 hours",
+          "format": "Instructor-Led",
+          "url": "https://learning.sap.com/courses/management-accounting-in-sap-s4hana",
+          "learningJourney": "https://learning.sap.com/learning-journeys/management-accounting-in-sap-s4hana",
+          "description": "Controlling (CO) fundamentals: cost center accounting, internal orders, product costing, profitability analysis (CO-PA), and cost object controlling."
+        }
+      ]
+    },
+    "SAP Integration Suite": {
+      "skill": "SAP Integration Suite",
+      "category": "Technical",
+      "aliases": ["SAP CPI", "Cloud Platform Integration", "SAP PO", "Process Orchestration", "API Management", "Integration Suite", "Event Mesh"],
+      "description": "Enterprise integration platform-as-a-service (iPaaS) connecting cloud and on-premise SAP and third-party systems seamlessly.",
+      "courses": [
+        {
+          "courseCode": "CLD900",
+          "title": "SAP Integration Suite - Overview and Core Capabilities",
+          "level": "Associate",
+          "duration": "3 days / 21 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/sap-integration-suite-overview",
+          "learningJourney": "https://learning.sap.com/learning-journeys/get-started-with-sap-integration-suite",
+          "description": "Foundational iPaaS concepts: Cloud Integration flows (iFlows), API Management, Open Connectors, Integration Advisor, and Event Mesh."
+        },
+        {
+          "courseCode": "CLD902",
+          "title": "Developing Integration Flows with SAP Cloud Integration",
+          "level": "Professional",
+          "duration": "4 days / 28 hours",
+          "format": "Hands-on Lab",
+          "url": "https://learning.sap.com/courses/developing-integration-flows-sap-cloud-integration",
+          "learningJourney": "https://learning.sap.com/learning-journeys/develop-integration-flows-with-sap-integration-suite",
+          "description": "Design secure iFlows, message mappings (XSLT, Groovy Script), content enrichers, splitters/aggregators, adapters (REST, SOAP, SFTP, OData, Kafka), and exception handling."
+        }
+      ]
+    },
+    "Machine Learning & AI in SAP": {
+      "skill": "Machine Learning & AI in SAP",
+      "category": "Technical",
+      "aliases": ["SAP AI Core", "SAP AI Launchpad", "Generative AI", "Joule", "Machine Learning", "SAP Data Intelligence", "Predictive Analytics"],
+      "description": "Enterprise machine learning pipelines, Large Language Model deployments, GenAI integration, and automated business processes utilizing SAP AI Core.",
+      "courses": [
+        {
+          "courseCode": "AI01",
+          "title": "Introduction to Generative AI with SAP",
+          "level": "Associate",
+          "duration": "2 days / 14 hours",
+          "format": "Self-Paced E-Learning",
+          "url": "https://learning.sap.com/courses/generative-ai-with-sap",
+          "learningJourney": "https://learning.sap.com/learning-journeys/explore-generative-ai-with-sap",
+          "description": "Understand SAP's AI ethics principles, Joule enterprise copilot, prompt engineering, generative AI hub on SAP BTP, and retrieval-augmented generation (RAG)."
+        },
+        {
+          "courseCode": "BTPML1",
+          "title": "Building Intelligent Applications with SAP AI Core and AI Launchpad",
+          "level": "Professional",
+          "duration": "3 days / 21 hours",
+          "format": "Hands-on Workshop",
+          "url": "https://learning.sap.com/courses/building-intelligent-applications-with-sap-ai-core",
+          "learningJourney": "https://learning.sap.com/learning-journeys/build-intelligent-applications-with-sap-ai-core",
+          "description": "Containerized machine learning model execution (Docker/Kubernetes), model serving pipelines, GitOps workflows with Argo, dataset versioning, and serving LLM endpoints."
+        }
+      ]
+    },
+    "Cloud & DevOps": {
+      "skill": "Cloud & DevOps",
+      "category": "Technical",
+      "aliases": ["Docker", "Kubernetes", "CI/CD", "DevOps", "Terraform", "Cloud Native", "AWS", "Azure", "GCP"],
+      "description": "Container orchestration, automated deployment pipelines, infrastructure as code, and cloud engineering best practices for enterprise solutions.",
+      "courses": [
+        {
+          "courseCode": "CLD200",
+          "title": "Cloud-Native Development & Containerization on SAP BTP",
+          "level": "Professional",
+          "duration": "3 days / 21 hours",
+          "format": "Lab-Based E-Learning",
+          "url": "https://learning.sap.com/courses/cloud-native-application-development",
+          "learningJourney": "https://learning.sap.com/learning-journeys/cloud-native-development-with-sap",
+          "description": "Containerizing microservices with Docker, deploying to SAP BTP Kyma runtime (Kubernetes), configuring Istio service mesh, ingress, and continuous delivery."
+        },
+        {
+          "courseCode": "CICD01",
+          "title": "Continuous Integration and Delivery with SAP Cloud SDK",
+          "level": "Associate",
+          "duration": "2 days / 14 hours",
+          "format": "E-Learning",
+          "url": "https://learning.sap.com/courses/continuous-integration-and-delivery-sap-cloud-sdk",
+          "learningJourney": "https://learning.sap.com/learning-journeys/implement-devops-with-sap",
+          "description": "Automated pipelines using SAP BTP CI/CD service, Piper library, quality gates, automated testing, and multi-cloud deployment automation."
+        }
+      ]
+    }
+  }
+}

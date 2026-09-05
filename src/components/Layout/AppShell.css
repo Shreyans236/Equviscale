@@ -1,0 +1,36 @@
+.es-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.es-shell__main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+}
+
+.es-shell__content {
+  margin-top: var(--navbar-height);
+  padding: var(--space-xl);
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.es-toast__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.es-toast__message {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.es-toast__icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
