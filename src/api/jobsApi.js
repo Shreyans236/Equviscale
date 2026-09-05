@@ -55,21 +55,52 @@ const MOCK_JOBS = [
   },
 ];
 
+const STORAGE_KEY = 'equiscale_jobs';
+
+const getStoredJobs = () => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to read jobs from localStorage', e);
+  }
+  // Initialize with MOCK_JOBS
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(MOCK_JOBS));
+  } catch (e) {}
+  return [...MOCK_JOBS];
+};
+
+const saveStoredJobs = (jobs) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs));
+  } catch (e) {
+    console.error('Failed to save jobs to localStorage', e);
+  }
+};
+
 const USE_MOCK = true;
 
 // ── API Methods ────────────────────────────────────────────────────────────────
 
 export const getJobs = async (params = {}) => {
   if (USE_MOCK) {
-    return new Promise((resolve) => setTimeout(() => resolve(MOCK_JOBS), 500));
+    const jobs = getStoredJobs();
+    return new Promise((resolve) => setTimeout(() => resolve(jobs), 300));
   }
   return axiosInstance.get('/api/v1/jobs', { params });
 };
 
 export const getJobById = async (id) => {
   if (USE_MOCK) {
+    const jobs = getStoredJobs();
     return new Promise((resolve) =>
-      setTimeout(() => resolve(MOCK_JOBS.find((j) => j.id === id)), 400)
+      setTimeout(() => resolve(jobs.find((j) => j.id === id) || null), 200)
     );
   }
   return axiosInstance.get(`/api/v1/jobs/${id}`);
@@ -77,36 +108,54 @@ export const getJobById = async (id) => {
 
 export const createJob = async (jobData) => {
   if (USE_MOCK) {
-    return new Promise((resolve) =>
-      setTimeout(
-        () =>
-          resolve({
-            id: `j-${Date.now()}`,
-            ...jobData,
-            status: 'Draft',
-            applicantCount: 0,
-            biasCheckPassed: false,
-            createdAt: new Date().toISOString().split('T')[0],
-          }),
-        900
-      )
-    );
+    const jobs = getStoredJobs();
+    const newJob = {
+      id: `j-${Date.now()}`,
+      title: jobData.title,
+      department: jobData.department || 'General',
+      location: jobData.location || 'Remote',
+      type: jobData.type || 'Full-Time',
+      salaryRange: jobData.salaryRange || 'Competitive',
+      requiredSkills: jobData.requiredSkills || [],
+      niceToHaveSkills: jobData.niceToHaveSkills || [],
+      experienceRequired: Number(jobData.experienceRequired) || 0,
+      description: jobData.description || '',
+      biasCheckPassed: jobData.biasCheckPassed !== undefined ? jobData.biasCheckPassed : true,
+      applicantCount: 0,
+      status: jobData.status || 'Active',
+      createdAt: new Date().toISOString().split('T')[0],
+      ...jobData,
+    };
+    const updated = [newJob, ...jobs];
+    saveStoredJobs(updated);
+    return new Promise((resolve) => setTimeout(() => resolve(newJob), 400));
   }
   return axiosInstance.post('/api/v1/jobs', jobData);
 };
 
 export const updateJob = async (id, jobData) => {
   if (USE_MOCK) {
-    return new Promise((resolve) =>
-      setTimeout(() => resolve({ id, ...jobData, updated: true }), 600)
-    );
+    const jobs = getStoredJobs();
+    let updatedJob = null;
+    const updated = jobs.map((j) => {
+      if (j.id === id) {
+        updatedJob = { ...j, ...jobData, updated: true };
+        return updatedJob;
+      }
+      return j;
+    });
+    if (updatedJob) saveStoredJobs(updated);
+    return new Promise((resolve) => setTimeout(() => resolve(updatedJob || { id, ...jobData }), 300));
   }
   return axiosInstance.put(`/api/v1/jobs/${id}`, jobData);
 };
 
 export const deleteJob = async (id) => {
   if (USE_MOCK) {
-    return new Promise((resolve) => setTimeout(() => resolve({ id, deleted: true }), 400));
+    const jobs = getStoredJobs();
+    const updated = jobs.filter((j) => j.id !== id);
+    saveStoredJobs(updated);
+    return new Promise((resolve) => setTimeout(() => resolve({ id, deleted: true }), 300));
   }
   return axiosInstance.delete(`/api/v1/jobs/${id}`);
 };

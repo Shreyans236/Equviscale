@@ -1,7 +1,7 @@
-import { useState, useCallback, useRef } from 'react';
-import { uploadResume } from '../../api/candidateApi';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import { analyzeResume, uploadResume } from '../../api/candidateApi';
+import { getJobs } from '../../api/jobsApi';
 import { useAppContext } from '../../context/AppContext';
-import LoadingSpinner from '../../components/common/LoadingSpinner';
 import './ResumeUpload.css';
 
 const ACCEPTED_TYPES = ['.pdf', '.doc', '.docx'];
@@ -16,7 +16,19 @@ const ResumeUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [uploadResult, setUploadResult] = useState(null);
+  const [jobs, setJobs] = useState([]);
+  const [selectedJobId, setSelectedJobId] = useState('');
+  const [analysis, setAnalysis] = useState(null);
+  const [analyzing, setAnalyzing] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getJobs().then((availableJobs) => {
+      const activeJobs = availableJobs.filter((job) => job.status === 'Active');
+      setJobs(activeJobs);
+      if (activeJobs[0]) setSelectedJobId(activeJobs[0].id);
+    });
+  }, []);
 
   const validateFile = (f) => {
     const ext = '.' + f.name.split('.').pop().toLowerCase();
@@ -60,6 +72,7 @@ const ResumeUpload = () => {
         setProgress(Math.round((loaded / total) * 100));
       });
       setUploadResult(result);
+      setAnalysis(null);
       addNotification({
         type: 'success',
         title: 'Resume Uploaded',
@@ -73,9 +86,26 @@ const ResumeUpload = () => {
     }
   };
 
+  const handleAnalyze = async () => {
+    const selectedJob = jobs.find((job) => job.id === selectedJobId);
+    if (!uploadResult || !selectedJob) return;
+    setAnalyzing(true);
+    setError(null);
+    try {
+      const result = await analyzeResume(uploadResult, selectedJob);
+      setAnalysis(result);
+    } catch (err) {
+      setError('Analysis failed. Please try again.');
+      addNotification({ type: 'error', title: 'Analysis Failed', message: err.message });
+    } finally {
+      setAnalyzing(false);
+    }
+  };
+
   const handleReset = () => {
     setFile(null);
     setUploadResult(null);
+    setAnalysis(null);
     setProgress(0);
     setError(null);
   };
@@ -201,6 +231,90 @@ const ResumeUpload = () => {
               <p>Your profile has been created from <strong>{file?.name}</strong></p>
             </div>
           </div>
+
+          <div className="resume-upload__match-panel es-card">
+            <div>
+              <div className="es-section-title">Compare with a target role</div>
+              <p className="resume-upload__section-copy">
+                See which requirements your resume already proves and what to strengthen next.
+              </p>
+            </div>
+            <div className="resume-upload__match-controls">
+              <select
+                className="es-select"
+                value={selectedJobId}
+                onChange={(e) => { setSelectedJobId(e.target.value); setAnalysis(null); }}
+                disabled={analyzing}
+              >
+                {jobs.length === 0 && <option value="">No active roles available</option>}
+                {jobs.map((job) => (
+                  <option key={job.id} value={job.id}>{job.title}</option>
+                ))}
+              </select>
+              <button
+                className="es-btn es-btn--primary"
+                onClick={handleAnalyze}
+                disabled={!selectedJobId || analyzing}
+              >
+                {analyzing ? 'Analyzing resume...' : 'Analyze against role'}
+              </button>
+            </div>
+          </div>
+
+          {analysis && (
+            <div className="resume-upload__analysis animate-fade-in-up">
+              <div className="resume-upload__analysis-heading">
+                <div>
+                  <div className="es-section-title">Your improvement plan</div>
+                  <p>Analysis for <strong>{analysis.jobTitle}</strong></p>
+                </div>
+                <div className="resume-upload__match-score">
+                  <strong>{analysis.overallScore}%</strong>
+                  <span>current match</span>
+                </div>
+              </div>
+              <div className="resume-upload__score-grid">
+                <div><span>Required skills</span><strong>{analysis.skillsScore}%</strong></div>
+                <div><span>Experience level</span><strong>{analysis.experienceScore}%</strong></div>
+                <div><span>Skills to address</span><strong>{analysis.missingSkills.length}</strong></div>
+              </div>
+              <div className="es-grid-3 resume-upload__recommendations">
+                <div className="es-card resume-upload__recommendation-card">
+                  <span className="resume-upload__recommendation-icon">✎</span>
+                  <h4>Resume content</h4>
+                  <p>{analysis.recommendations.content}</p>
+                </div>
+                <div className="es-card resume-upload__recommendation-card">
+                  <span className="resume-upload__recommendation-icon">◇</span>
+                  <h4>Certificates</h4>
+                  <p>{analysis.recommendations.certificates}</p>
+                </div>
+                <div className="es-card resume-upload__recommendation-card">
+                  <span className="resume-upload__recommendation-icon">↗</span>
+                  <h4>Skills to polish</h4>
+                  <p>{analysis.recommendations.skills}</p>
+                </div>
+              </div>
+              <div className="resume-upload__skill-lists">
+                <div>
+                  <h4>Strong evidence</h4>
+                  <div className="resume-upload__skill-tags">
+                    {analysis.matchingSkills.length > 0
+                      ? analysis.matchingSkills.map((skill) => <span key={skill} className="es-badge es-badge--success">✓ {skill}</span>)
+                      : <span className="resume-upload__muted">No required skills matched yet.</span>}
+                  </div>
+                </div>
+                <div>
+                  <h4>Priority gaps</h4>
+                  <div className="resume-upload__skill-tags">
+                    {analysis.missingSkills.length > 0
+                      ? analysis.missingSkills.map((skill) => <span key={skill} className="es-badge es-badge--warning">! {skill}</span>)
+                      : <span className="resume-upload__muted">No required skill gaps found.</span>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="es-grid-2">
             <div className="es-card">

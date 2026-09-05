@@ -57,30 +57,73 @@ const JobCreator = () => {
     await checkBias(form.description);
   };
 
-  const handleSubmit = async () => {
+  const [createdJob, setCreatedJob] = useState(null);
+
+  const handleSubmit = async (publishStatus = 'Active') => {
+    const minSal = form.salaryMin ? `${form.currency}${form.salaryMin}` : '';
+    const maxSal = form.salaryMax ? `${form.currency}${form.salaryMax}` : '';
+    const salaryRange = minSal && maxSal ? `${minSal} – ${maxSal}` : minSal || maxSal || 'Competitive';
+
     const jobData = {
       ...form,
-      salaryRange: `${form.currency}${form.salaryMin} – ${form.currency}${form.salaryMax}`,
+      status: publishStatus,
+      biasCheckPassed: biasResult ? biasResult.passed : true,
+      salaryRange,
       experienceRequired: parseInt(form.experienceRequired) || 0,
     };
+
     const result = await submitJob(jobData);
     if (result) {
+      setCreatedJob(result);
       setSubmitted(true);
-      addNotification({ type: 'success', title: 'Job Posted', message: `"${form.title}" has been saved as a draft.` });
+      addNotification({
+        type: 'success',
+        title: publishStatus === 'Active' ? 'Job Published!' : 'Draft Saved!',
+        message: `"${form.title}" is now ${publishStatus === 'Active' ? 'live on your dashboard' : 'saved as a draft'}.`,
+      });
     }
+  };
+
+  const handleReset = () => {
+    setForm({
+      title: '',
+      department: '',
+      location: '',
+      type: 'Full-Time',
+      salaryMin: '',
+      salaryMax: '',
+      currency: '€',
+      experienceRequired: '',
+      description: '',
+      requiredSkills: [],
+      niceToHaveSkills: [],
+    });
+    setSkillInput({ required: '', nice: '' });
+    resetBias?.();
+    setCreatedJob(null);
+    setSubmitted(false);
   };
 
   if (submitted) {
     return (
       <div className="job-creator animate-fade-in-up">
         <div className="es-page-header"><h2>Post a Job</h2></div>
-        <div className="job-creator__success es-card">
-          <div className="job-creator__success-icon">🎉</div>
-          <h3>Job Posted Successfully!</h3>
-          <p>Your job listing has been saved as a draft and will be reviewed before going live.</p>
-          <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', marginTop: 'var(--space-lg)' }}>
-            <button className="es-btn es-btn--primary" onClick={() => setSubmitted(false)}>
-              Post Another Job
+        <div className="job-creator__success es-card" style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+          <div className="job-creator__success-icon" style={{ fontSize: '3rem', marginBottom: 'var(--space-md)' }}>🎉</div>
+          <h3 style={{ fontSize: '1.5rem', marginBottom: 'var(--space-xs)' }}>Job Created Successfully!</h3>
+          <p style={{ color: 'var(--color-text-secondary)', marginBottom: 'var(--space-lg)' }}>
+            <strong>{createdJob?.title}</strong> ({createdJob?.status}) has been added and saved to your active listings.
+          </p>
+
+          <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="/recruiter" className="es-btn es-btn--primary">
+              📋 Go to Dashboard
+            </a>
+            <a href={`/recruiter/shortlist?job=${createdJob?.id || ''}`} className="es-btn es-btn--secondary">
+              👥 View Candidates
+            </a>
+            <button className="es-btn es-btn--secondary" onClick={handleReset}>
+              ➕ Post Another Job
             </button>
           </div>
         </div>
@@ -237,11 +280,17 @@ const JobCreator = () => {
             <button
               className="es-btn es-btn--primary"
               disabled={!form.title || !form.description || submitting}
-              onClick={handleSubmit}
+              onClick={() => handleSubmit('Active')}
             >
               {submitting ? '⏳ Saving...' : '🚀 Post Job'}
             </button>
-            <button className="es-btn es-btn--secondary">Save Draft</button>
+            <button
+              className="es-btn es-btn--secondary"
+              disabled={!form.title || !form.description || submitting}
+              onClick={() => handleSubmit('Draft')}
+            >
+              💾 Save Draft
+            </button>
           </div>
         </div>
 

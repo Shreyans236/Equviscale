@@ -2,29 +2,49 @@ import { useState, useEffect } from 'react';
 import { getAnonymizedList } from '../../api/anonymizeApi';
 import { getJobs } from '../../api/jobsApi';
 import { useAppContext } from '../../context/AppContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
 import ScoreGauge from '../../components/common/ScoreGauge';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import './CandidateShortlist.css';
 
+const SortIcon = ({ col, sortBy, sortDir }) =>
+  sortBy === col ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ' ⇅';
+
 const CandidateShortlist = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryJobId = searchParams.get('job');
   const { setSelectedJob } = useAppContext();
   const { data: jobs, execute: fetchJobs } = useApi(getJobs);
   const { data: candidates, loading, execute: fetchCandidates } = useApi(getAnonymizedList);
 
-  const [selectedJobId, setSelectedJobId] = useState('');
+  const [selectedJobId, setSelectedJobId] = useState(queryJobId || '');
   const [sortBy, setSortBy] = useState('matchScore');
   const [sortDir, setSortDir] = useState('desc');
   const [filterMin, setFilterMin] = useState(0);
   const [searchSkill, setSearchSkill] = useState('');
   const [shortlisted, setShortlisted] = useState(new Set());
 
-  useEffect(() => { fetchJobs(); }, []);
   useEffect(() => {
-    if (selectedJobId) fetchCandidates(selectedJobId);
-  }, [selectedJobId]);
+    fetchJobs();
+  }, []);
+
+  useEffect(() => {
+    if (queryJobId) {
+      setSelectedJobId(queryJobId);
+    } else if (jobs && jobs.length > 0 && !selectedJobId) {
+      setSelectedJobId(jobs[0].id);
+    }
+  }, [queryJobId, jobs]);
+
+  useEffect(() => {
+    if (selectedJobId) {
+      fetchCandidates(selectedJobId);
+      const found = jobs?.find((j) => j.id === selectedJobId);
+      if (found) setSelectedJob?.(found);
+    }
+  }, [selectedJobId, jobs]);
 
   const toggleShortlist = (id) => {
     setShortlisted((prev) => {
@@ -49,9 +69,6 @@ const CandidateShortlist = () => {
       if (typeof vb === 'string') vb = vb.toLowerCase();
       return sortDir === 'asc' ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
     });
-
-  const SortIcon = ({ col }) =>
-    sortBy === col ? (sortDir === 'asc' ? ' ↑' : ' ↓') : ' ⇅';
 
   return (
     <div className="shortlist animate-fade-in-up">
@@ -133,19 +150,19 @@ const CandidateShortlist = () => {
                 <th style={{ width: 48 }}></th>
                 <th>
                   <button className="shortlist__sort-btn" onClick={() => handleSort('anonymizedId')}>
-                    Candidate ID <SortIcon col="anonymizedId" />
+                    Candidate ID <SortIcon col="anonymizedId" sortBy={sortBy} sortDir={sortDir} />
                   </button>
                 </th>
                 <th>Top Skills</th>
                 <th>
                   <button className="shortlist__sort-btn" onClick={() => handleSort('experience')}>
-                    Experience <SortIcon col="experience" />
+                    Experience <SortIcon col="experience" sortBy={sortBy} sortDir={sortDir} />
                   </button>
                 </th>
                 <th>Education</th>
                 <th>
                   <button className="shortlist__sort-btn" onClick={() => handleSort('matchScore')}>
-                    Match Score <SortIcon col="matchScore" />
+                    Match Score <SortIcon col="matchScore" sortBy={sortBy} sortDir={sortDir} />
                   </button>
                 </th>
                 <th>Actions</th>

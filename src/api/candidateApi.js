@@ -135,6 +135,59 @@ export const uploadResume = async (file, onUploadProgress) => {
   });
 };
 
+export const analyzeResume = async (resume, job) => {
+  if (USE_MOCK) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const resumeSkills = resume.parsedSkills || [];
+        const requiredSkills = job.requiredSkills || [];
+        const niceToHaveSkills = job.niceToHaveSkills || [];
+        const normalizedResumeSkills = resumeSkills.map((skill) => skill.toLowerCase());
+        const matchingSkills = requiredSkills.filter((skill) =>
+          normalizedResumeSkills.includes(skill.toLowerCase())
+        );
+        const missingSkills = requiredSkills.filter((skill) =>
+          !normalizedResumeSkills.includes(skill.toLowerCase())
+        );
+        const bonusSkills = niceToHaveSkills.filter((skill) =>
+          normalizedResumeSkills.includes(skill.toLowerCase())
+        );
+        const experienceScore = Math.min(
+          100,
+          Math.round((resume.parsedExperience / Math.max(job.experienceRequired, 1)) * 100)
+        );
+        const skillsScore = requiredSkills.length
+          ? Math.round((matchingSkills.length / requiredSkills.length) * 100)
+          : 100;
+        const overallScore = Math.round(skillsScore * 0.65 + Math.min(experienceScore, 100) * 0.35);
+
+        resolve({
+          jobId: job.id,
+          jobTitle: job.title,
+          overallScore,
+          skillsScore,
+          experienceScore: Math.min(experienceScore, 100),
+          matchingSkills,
+          missingSkills,
+          bonusSkills,
+          recommendations: {
+            content: missingSkills.length
+              ? `Add measurable outcomes to projects that demonstrate ${missingSkills.slice(0, 2).join(' and ')}. Mirror the role language only where it truthfully reflects your experience.`
+              : 'Your experience is well aligned. Strengthen each role with measurable outcomes, scope, and the tools you used.',
+            certificates: missingSkills.includes('AWS') || missingSkills.includes('Azure')
+              ? 'Consider a cloud fundamentals certification that matches the platform used in this role.'
+              : 'No certificate is essential for this match. Prioritize a project or portfolio example over collecting another credential.',
+            skills: missingSkills.length
+              ? `Build or highlight evidence for ${missingSkills.join(', ')}. ${bonusSkills.length ? `Your ${bonusSkills.join(' and ')} experience is a useful differentiator.` : ''}`
+              : 'Keep your core skills prominent and add the depth of each skill in your project bullets.',
+          },
+        });
+      }, 900);
+    });
+  }
+  return axiosInstance.post('/api/v1/candidates/resume/analyze', { resume, job });
+};
+
 export const getMyApplications = async () => {
   if (USE_MOCK) {
     return new Promise((resolve) => setTimeout(() => resolve(MY_APPLICATIONS), 500));
