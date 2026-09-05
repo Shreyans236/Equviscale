@@ -1,16 +1,149 @@
-# React + Vite
+# EquiScale — AI-Powered Inclusive Recruitment Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> **SAP Hackfest 2024** | Built by Team EquiScale
 
-Currently, two official plugins are available:
+EquiScale is a dual-sided AI-powered recruitment platform that removes unconscious bias from hiring by anonymizing candidates and matching talent purely on skills, experience, and potential.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🎓 Candidate Portal (`/candidate`)
+| Feature | Description |
+|---|---|
+| **Resume Upload** | Drag-and-drop resume upload with AI skill parsing and progress tracking |
+| **Profile Builder** | 4-step guided builder for personal info, experience, skills, and portfolio |
+| **Application Tracker** | Real-time pipeline view (Applied → Screening → Interview → Offer) with match scores |
 
-## Expanding the Oxlint configuration
+### 🔍 Recruiter Dashboard (`/recruiter`)
+| Feature | Description |
+|---|---|
+| **Job Creator** | Rich job form with AI bias detection on job descriptions |
+| **Blind Shortlist** | Anonymized candidate table — no names, photos, or PII; sortable by match score |
+| **Match Score View** | AI breakdown of candidate-job compatibility: skills, experience, education, culture fit |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### 🔌 API Integration Layer
+| Endpoint | File | Mock | 
+|---|---|---|
+| `/api/v1/candidates` | `src/api/candidateApi.js` | ✅ |
+| `/api/v1/jobs` | `src/api/jobsApi.js` | ✅ |
+| `/api/v1/anonymize` | `src/api/anonymizeApi.js` | ✅ |
+
+---
+
+## 🗂 Project Structure
+
+```
+src/
+├── api/                    # API integration layer (mock + real)
+│   ├── axiosInstance.js    # Configured axios client
+│   ├── candidateApi.js     # Candidate endpoints
+│   ├── jobsApi.js          # Job endpoints
+│   └── anonymizeApi.js     # Anonymization & match score endpoints
+├── components/
+│   ├── Layout/             # AppShell, Navbar, Sidebar
+│   └── common/             # StatusBadge, ScoreGauge, LoadingSpinner
+├── context/
+│   └── AppContext.jsx      # Global state (user, role, notifications)
+├── hooks/
+│   └── useApi.js           # Generic async API hook
+├── pages/
+│   ├── Home.jsx            # Landing / role selection
+│   ├── candidate/          # Candidate portal pages
+│   └── recruiter/          # Recruiter dashboard pages
+├── styles/
+│   └── globals.css         # Design tokens, utilities, components
+└── App.jsx                 # Root router
+```
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **React 18 + Vite** | Core framework & build tool |
+| **React Router v6** | File-based nested routing |
+| **Axios** | HTTP client with interceptors |
+| **@ui5/webcomponents-react** | SAP Fiori design system |
+| **Custom CSS** | Premium dark mode design system |
+
+---
+
+## ⚡ Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+The app runs at **http://localhost:3000**
+
+---
+
+## 🔧 Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+> **Note:** The app ships with full mock data. Set `USE_MOCK = false` in each API file to connect to your real backend.
+
+---
+
+## 🏗 API Endpoints (Backend Contract)
+
+### Candidates
+```
+GET    /api/v1/candidates          — List all candidates
+GET    /api/v1/candidates/:id      — Get candidate by ID
+POST   /api/v1/candidates          — Create candidate profile
+POST   /api/v1/candidates/resume   — Upload & parse resume
+PUT    /api/v1/candidates/:id      — Update profile
+GET    /api/v1/candidates/applications — Get my applications
+```
+
+### Jobs
+```
+GET    /api/v1/jobs               — List all jobs
+GET    /api/v1/jobs/:id           — Get job by ID
+POST   /api/v1/jobs               — Create a job listing
+PUT    /api/v1/jobs/:id           — Update a job
+DELETE /api/v1/jobs/:id           — Delete a job
+POST   /api/v1/jobs/bias-check    — Run AI bias check on description
+```
+
+### Anonymization & Matching
+```
+POST   /api/v1/anonymize          — Anonymize a candidate
+GET    /api/v1/anonymize/list     — Get anonymized candidate list for a job
+GET    /api/v1/anonymize/match-scores — Get AI match score breakdown
+POST   /api/v1/anonymize/bulk     — Bulk anonymize all candidates for a job
+```
+
+---
+
+## 🎨 Design System
+
+The app uses a custom dark-mode design system with:
+- **CSS Custom Properties** for all tokens
+- **Inter + Plus Jakarta Sans** typography
+- **SAP Fiori** color alignment
+- Glassmorphism cards, animated orbs, SVG score gauges
+- Fully responsive grid system
+
+---
+
+## 👥 Team
+
+Built for **SAP Hackfest 2024** by Team EquiScale.
+
+> *"Inclusive hiring isn't just ethical — it's smart business."*
